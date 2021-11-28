@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcDemo.Message";
+
+package Company;
+
+import "CommonMessage.proto";
+
+message CompanyResponse {
+  Common.ResponseCode Code = 1;
+  CompanyMessage data = 2;
+}
+
+message CompaniesResponse {
+  Common.ResponseCode Code = 1;
+  repeated CompanyMessage data = 2;
+}
+
+message CompanyMessage {
+   int32 Id = 1;
+   string Name = 2;
+   string Industry = 3;
+   string Address = 4;
+   int32 Phone = 5;
+}
+
+message QueryCompanyMessage {
+   int32 Id = 1;
+}

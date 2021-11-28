@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="CommonMessage.proto" />
+    <None Remove="CompanyMessage.proto" />
+    <None Remove="CompanyService.proto" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Google.Protobuf" Version="3.19.1" />
+    <PackageReference Include="Grpc" Version="2.42.0" />
+    <PackageReference Include="Grpc.Tools" Version="2.42.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Protobuf Include="CommonMessage.proto" GrpcServices="Both" ProtoCompile="true" />
+    <Protobuf Include="CompanyService.proto" GrpcServices="Both" ProtoCompile="true" />
+    <Protobuf Include="CompanyMessage.proto" GrpcServices="Both" ProtoCompile="true" />
+  </ItemGroup>
+
+</Project>

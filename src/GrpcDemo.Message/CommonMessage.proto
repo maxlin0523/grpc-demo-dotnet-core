@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcDemo.Message";
+
+package Common;
+
+enum ResponseCode {
+  Success = 0;
+  Fail = 1;
+  Exception = 2;
+}
+
+message GeneralResponse {
+  ResponseCode Code = 1;
+  string Message = 2;
+}
+
+message Empty {
+}

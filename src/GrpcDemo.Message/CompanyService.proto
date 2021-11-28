@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcDemo.Message";
+
+package Company;
+
+import "CommonMessage.proto";
+import "CompanyMessage.proto";
+
+service CompanyService {
+  rpc GetById (QueryCompanyMessage) returns (CompanyResponse);
+  rpc GetAll (Common.Empty) returns (CompaniesResponse);
+  rpc Create (CompanyMessage) returns (Common.GeneralResponse);
+  rpc Update (CompanyMessage) returns (Common.GeneralResponse);
+  rpc Delete (QueryCompanyMessage) returns (Common.GeneralResponse);
+}

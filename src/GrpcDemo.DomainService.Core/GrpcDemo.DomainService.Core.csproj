@@ -5,12 +5,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="DTOs\" />
-    <Folder Include="Entities\" />
-    <Folder Include="Repositories\Interfaces\" />
-    <Folder Include="Repositories\" />
-    <Folder Include="Services\Interfaces\" />
-    <Folder Include="Utilities\Helpers\" />
+    <PackageReference Include="Dapper" Version="2.0.123" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="4.0.0" />
+    <PackageReference Include="MySqlConnector" Version="2.1.0" />
+    <PackageReference Include="StackExchange.Redis" Version="2.2.88" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GrpcDemo.Common\GrpcDemo.Common.csproj" />
   </ItemGroup>
 
 </Project>

@@ -67,7 +67,7 @@ namespace GrpcDemo.WebApplication
                 });
             }
 
-            // Global Exception handler
+            // Exception handler
             app.UseMiddleware<ExceptionMiddleware>();
 
             app.UseStatusCodePages();

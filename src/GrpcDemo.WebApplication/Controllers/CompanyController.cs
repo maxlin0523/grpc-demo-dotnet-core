@@ -33,7 +33,7 @@ namespace GrpcDemo.WebApplication.Controllers
             var result = await _serviceClient.GetByIdAsync(new QueryCompanyMessage { Id = id });
 
             return new GeneralResponse<CompanyViewModel>(
-                code: ResponseCode.Success, data: _mapper.Map<CompanyViewModel>(result));
+                code: ResponseCode.Success, data: _mapper.Map<CompanyViewModel>(result.Data));
         }
 
         [HttpGet]

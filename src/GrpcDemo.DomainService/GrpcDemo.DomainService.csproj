@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -9,12 +9,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Utilities\Mappers\" />
-    <Folder Include="Utilities\Interceptors\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\GrpcDemo.Common\GrpcDemo.Common.csproj" />
+    <ProjectReference Include="..\GrpcDemo.DomainService.Core\GrpcDemo.DomainService.Core.csproj" />
     <ProjectReference Include="..\GrpcDemo.Message\GrpcDemo.Message.csproj" />
   </ItemGroup>
 

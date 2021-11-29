@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace GrpcDemo.Common.Enums
 {
-    [JsonConverter(typeof(JsonStringEnumConverter))]
     public enum ResponseCode
     {
         Success,

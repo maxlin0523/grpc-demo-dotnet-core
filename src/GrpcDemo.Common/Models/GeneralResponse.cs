@@ -7,7 +7,7 @@ namespace GrpcDemo.Common.Models
 {
     public class GeneralResponse<T>
     {
-        public GeneralResponse(ResponseCode code, T data, string message = null)
+        public GeneralResponse(ResponseCode code, T data, string message = "None")
         {
             Code = code;
             Message = message;

@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
@@ -23,9 +24,10 @@ namespace GrpcDemo.DomainService
                     webBuilder.UseStartup<Startup>()
                      .ConfigureKestrel((context, kestrelOptions) =>
                      {
+                         var port = context.Configuration.GetValue<int>("DomainServicePort");
+
                          // Expose 5233
-                         kestrelOptions.ListenAnyIP(5233,
-                             listenOptions => { listenOptions.Protocols = HttpProtocols.Http2; });
+                         kestrelOptions.ListenAnyIP(port, listenOptions => { listenOptions.Protocols = HttpProtocols.Http2; });
                      });
                 });
     }

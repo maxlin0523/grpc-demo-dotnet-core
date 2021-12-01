@@ -25,21 +25,21 @@
 * **build**
     * **sql**
         * **init.sql** 為 Docker-Compose 啟動時， MSSQL 初始化執行的腳本
-    * **Docker-Compose.yml** 用來建置整體應用程式的架構
+    * **Docker-Compose.yml** 用來建置整體應用程式的微服務架構
     * **WebApplication.Dockerfile** 用來建置 GrpcDemo.WebApplication 的 Image
     * **DomainService.Dockerfile** 用來建置 GrpcDemo.DomainService 的 Image
 * **src**
     * **GrpcDemo.Common** 放置 Response Wrapper 與狀態碼
     * **GrpcDemo.WebApplication**
-        * **Controllers** 放置處理來自外部 API 的接口物件
-        * **Parameters** 放置外部傳進來的參數物件
-        * **ViewModels** 放置內部回傳的參數物件
+        * **Controllers** 放置處理來自外部 API 的請求接口
+        * **Parameters** 放置外部傳進來的參數
+        * **ViewModels** 放置回傳外部的參數
         * **Utilities**
             * **Mappers** 放置參數映射的 Profile 物件
             * **Middlewares** 放置中介層的物件
     * **GrpcDemo.Message** 放置 gRPC 規格的定義 proto 檔
     * **GrpcDemo.DomainService**
-        * **Implements** 放置處理來自 Module 的接口物件
+        * **Implements** 放置處理來自 Module 的請求接口
         * **Utilities**
             * **Mappers** 放置參數映射的 Profile 物件
             * **Interceptors** 放置 gRPC 攔截器的物件

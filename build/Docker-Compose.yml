@@ -33,8 +33,6 @@ services:
   mssql:
     image: mcr.microsoft.com/mssql/server
     container_name: Sql
-    ports:
-      - "3335:1433"
     volumes:
       - ./sql/data/data:/var/opt/mssql/data
       - ./sql/data/log:/var/opt/mssql/log

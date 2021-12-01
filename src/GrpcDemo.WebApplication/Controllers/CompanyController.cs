@@ -33,7 +33,7 @@ namespace GrpcDemo.WebApplication.Controllers
             var result = await _serviceClient.GetByIdAsync(new QueryCompanyMessage { Id = id });
 
             return new GeneralResponse<CompanyViewModel>(
-                code: ResponseCode.Success, data: _mapper.Map<CompanyViewModel>(result.Data));
+                code: (ResponseCode)result.Code, data: _mapper.Map<CompanyViewModel>(result.Data));
         }
 
         [HttpGet]
@@ -43,7 +43,7 @@ namespace GrpcDemo.WebApplication.Controllers
             var result = await _serviceClient.GetAllAsync(new Empty());
 
             return new GeneralResponse<IEnumerable<CompanyViewModel>>(
-                code: ResponseCode.Success, data: _mapper.Map<IEnumerable<CompanyViewModel>>(result.Data));
+                code: (ResponseCode)result.Code, data: _mapper.Map<IEnumerable<CompanyViewModel>>(result.Data));
         }
 
         [HttpPost]
@@ -53,7 +53,7 @@ namespace GrpcDemo.WebApplication.Controllers
             var result = await _serviceClient.CreateAsync(_mapper.Map<CompanyMessage>(param));
 
             return new GeneralResponse<string>(
-                code: ResponseCode.Success, data: string.Empty, message: result.Message);
+                code: (ResponseCode)result.Code, data: string.Empty, message: result.Message);
         }
 
         [HttpPut]
@@ -63,7 +63,7 @@ namespace GrpcDemo.WebApplication.Controllers
             var result = await _serviceClient.UpdateAsync(_mapper.Map<CompanyMessage>(param));
 
             return new GeneralResponse<string>(
-                code: ResponseCode.Success, data: string.Empty, message: result.Message);
+                code: (ResponseCode)result.Code, data: string.Empty, message: result.Message);
         }
 
         [HttpDelete]
@@ -73,7 +73,7 @@ namespace GrpcDemo.WebApplication.Controllers
             var result = await _serviceClient.DeleteAsync(new QueryCompanyMessage { Id = id });
 
             return new GeneralResponse<string>(
-                code: ResponseCode.Success, data: string.Empty, message: result.Message);
+                code: (ResponseCode)result.Code, data: string.Empty, message: result.Message);
         }
     }
 }

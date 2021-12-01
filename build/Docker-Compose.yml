@@ -1,0 +1,55 @@
+version: '3.7'
+services:
+  # GrpcDemo.WebApplication
+  webapplication:
+    build:
+      context: ../
+      dockerfile: ./build/WebApplication.Dockerfile
+    container_name: WebApplication
+    networks:
+      - test
+    ports:
+      - "5555:80"
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+      DomainService__Host: "DomainService"
+      DomainService__Port: "3333"
+    depends_on: 
+      - domainservice
+  # GrpcDemo.DomainService
+  domainservice:
+    build:
+      context: ../
+      dockerfile: ./build/DomainService.Dockerfile
+    container_name: DomainService
+    networks:
+      - test
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+      Sql__ConnectionString: "Data Source=Sql,1433;Initial Catalog=Sample;user id=sa;password=Aa123456!;TrustServerCertificate=true;"
+    depends_on:
+      - mssql
+  # MSSQL 
+  mssql:
+    image: mcr.microsoft.com/mssql/server
+    container_name: Sql
+    ports:
+      - "3335:1433"
+    volumes:
+      - ./sql/data/data:/var/opt/mssql/data
+      - ./sql/data/log:/var/opt/mssql/log
+      - ./sql/data/secrets:/var/opt/mssql/secrets
+      - ./sql/init:/usr/src
+    networks:
+      - test
+    environment:
+      ACCEPT_EULA: Y
+      SA_PASSWORD: Aa123456!
+    command:  
+      - /bin/bash 
+      - -c
+      - /opt/mssql-tools/bin/sqlcmd -S 127.0.0.1,1433 -U sa -P Aa123456! -d master -i /usr/src/init.sql & /opt/mssql/bin/sqlservr
+# bridge
+networks:
+  test:
+    driver: bridge 

@@ -63,8 +63,8 @@
     * Swagger
 * **參數驗證**
     * FluentValidation(待補)
-* **效能追蹤**
-    * CoreProfiler(待補)
+* **分散式效能追蹤**
+    * Jaeger(待補)
 * **單元測試**
     * FluentAssertion
     * NSubstitute

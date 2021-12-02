@@ -10,7 +10,7 @@ namespace GrpcDemo.DomainService.Core.Utilities.Helpers
         public readonly string _connectionString;
 
         public SqlConnectionHelper(string connectionString)
-        {
+        {           
             _connectionString = connectionString;
         }
 

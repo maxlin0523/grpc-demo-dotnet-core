@@ -26,7 +26,9 @@ services:
       - test
     environment:
       ASPNETCORE_ENVIRONMENT: "Development"
-      Sql__ConnectionString: "Data Source=Sql,1433;Initial Catalog=Sample;user id=sa;password=Aa123456!;TrustServerCertificate=true;"
+      # 同個 bridge 可用 container_name 解析出容器 IP
+      Sql__Host: "Sql"
+      redis__ConnectionString: "redis:6379"
     depends_on:
       - mssql
   # MSSQL 
@@ -34,10 +36,10 @@ services:
     image: mcr.microsoft.com/mssql/server
     container_name: Sql
     volumes:
-      - ./sql/data/data:/var/opt/mssql/data
-      - ./sql/data/log:/var/opt/mssql/log
-      - ./sql/data/secrets:/var/opt/mssql/secrets
-      - ./sql/init:/usr/src
+      - ./data/mssql/data:/var/opt/mssql/data
+      - ./data/mssql/log:/var/opt/mssql/log
+      - ./data/mssql/secrets:/var/opt/mssql/secrets
+      - ./init:/usr/src
     networks:
       - test
     environment:
@@ -46,7 +48,19 @@ services:
     command:  
       - /bin/bash 
       - -c
-      - /opt/mssql-tools/bin/sqlcmd -S 127.0.0.1,1433 -U sa -P Aa123456! -d master -i /usr/src/init.sql & /opt/mssql/bin/sqlservr
+      - /opt/mssql-tools/bin/sqlcmd -S 127.0.0.1,1433 -U sa -P Aa123456! -d master -i /usr/src/mssql-init.sql & /opt/mssql/bin/sqlservr
+    depends_on:
+      - redis
+  # Redis
+  redis:
+    image: redis
+    container_name: redis
+    volumes:
+      - .data/redis:/data
+    networks:
+      - test
+    ports:
+      - "3336:6379"
 # bridge
 networks:
   test:

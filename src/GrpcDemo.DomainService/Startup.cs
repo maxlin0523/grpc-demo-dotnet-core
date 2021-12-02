@@ -4,6 +4,7 @@ using GrpcDemo.DomainService.Core.Repositories;
 using GrpcDemo.DomainService.Core.Services;
 using GrpcDemo.DomainService.Core.Utilities.Helpers;
 using GrpcDemo.DomainService.Implements;
+using GrpcDemo.DomainService.Utilities.DependencyInjectionExtensions;
 using GrpcDemo.DomainService.Utilities.Interceptors;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -12,9 +13,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace GrpcDemo.DomainService
 {
@@ -41,15 +39,8 @@ namespace GrpcDemo.DomainService
             // Repositories
             services.AddSingleton<ICompanyRepository, CompanyRepository>();
 
-            // Connection helpers
-            var redis = Configuration.GetSection("Redis:ConnectionString").Value;
-            services.AddSingleton(new RedisConnectionHelper(redis));
-
-            var mssql = Configuration.GetSection("Sql:ConnectionString").Value;
-            services.AddSingleton(new SqlConnectionHelper(mssql));
-
-            var mysql = Configuration.GetSection("MySql:ConnectionString").Value;
-            services.AddSingleton(new MySqlConnectionHelper(mysql));
+            // Database
+            services.AddDatabaseHelperExtension(Configuration);
 
             // AutoMapper
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());

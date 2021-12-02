@@ -24,9 +24,7 @@ namespace GrpcDemo.DomainService
                     webBuilder.UseStartup<Startup>()
                      .ConfigureKestrel((context, kestrelOptions) =>
                      {
-                         var port = context.Configuration.GetValue<int>("DomainServicePort");
-
-                         // Expose 5233
+                         var port = context.Configuration.GetValue<int>("DomainService:Port");
                          kestrelOptions.ListenAnyIP(port, listenOptions => { listenOptions.Protocols = HttpProtocols.Http2; });
                      });
                 });

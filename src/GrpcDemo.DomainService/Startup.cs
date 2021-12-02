@@ -2,7 +2,7 @@
 using GrpcDemo.DomainService.Core.Interfaces.Services;
 using GrpcDemo.DomainService.Core.Repositories;
 using GrpcDemo.DomainService.Core.Services;
-using GrpcDemo.DomainService.Core.Utilities.Helpers;
+using GrpcDemo.DomainService.Core.Utilities.DatabaseHelpers;
 using GrpcDemo.DomainService.Implements;
 using GrpcDemo.DomainService.Utilities.DependencyInjectionExtensions;
 using GrpcDemo.DomainService.Utilities.Interceptors;

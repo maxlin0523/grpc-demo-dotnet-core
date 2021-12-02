@@ -1,4 +1,4 @@
-﻿using GrpcDemo.DomainService.Core.Utilities.Helpers;
+﻿using GrpcDemo.DomainService.Core.Utilities.DatabaseHelpers;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;

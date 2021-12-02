@@ -3,11 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace GrpcDemo.DomainService.Core.Utilities.Helpers
+namespace GrpcDemo.DomainService.Core.Utilities.DatabaseHelpers
 {
     public class SqlConnectionHelper
     {
-        public readonly string _connectionString;
+        private readonly string _connectionString;
 
         public SqlConnectionHelper(string connectionString)
         {           

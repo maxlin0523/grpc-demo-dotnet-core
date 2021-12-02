@@ -1,6 +1,6 @@
 ﻿using GrpcDemo.DomainService.Core.Entities;
 using GrpcDemo.DomainService.Core.Interfaces.Repositories;
-using GrpcDemo.DomainService.Core.Utilities.Helpers;
+using GrpcDemo.DomainService.Core.Utilities.DatabaseHelpers;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,6 +12,7 @@ namespace GrpcDemo.DomainService.Core.Repositories
     public class CompanyRepository : ICompanyRepository
     {
         private readonly SqlConnectionHelper _databaseHelper;
+
         public CompanyRepository(SqlConnectionHelper helper)
         {
             _databaseHelper = helper;

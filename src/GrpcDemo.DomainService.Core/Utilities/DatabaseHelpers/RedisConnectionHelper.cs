@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Text;
 using StackExchange.Redis;
 
-namespace GrpcDemo.DomainService.Core.Utilities.Helpers
+namespace GrpcDemo.DomainService.Core.Utilities.DatabaseHelpers
 {
     public class RedisConnectionHelper
     {
-        public readonly string _connectionString;
+        private readonly string _connectionString;
 
         public RedisConnectionHelper(string connectionString)
         {
@@ -17,6 +17,11 @@ namespace GrpcDemo.DomainService.Core.Utilities.Helpers
         public ConnectionMultiplexer GetConnection()
         {
             return ConnectionMultiplexer.Connect(_connectionString);
+        }
+
+        public string GetConnectionString()
+        {
+            return _connectionString;
         }
     }
 }

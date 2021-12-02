@@ -25,7 +25,7 @@ namespace GrpcDemo.DomainService.Core.Lua
             return loaded;
         }
 
-        public async Task<RedisResult> Execute(string script, RedisKey[] keys, RedisValue[] values = null)
+        public async Task<RedisResult> Execute(string script, RedisKey[] keys = null, RedisValue[] values = null)
         {
             var loadedScript = await Load(script);
 

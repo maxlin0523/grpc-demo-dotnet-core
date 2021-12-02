@@ -35,7 +35,7 @@ namespace GrpcDemo.DomainService.Core.Lua.Scripts
             local industry = ARGV[3]
             local address = ARGV[4]
             local phone = ARGV[5]
-            return redis.call('HSET', targetKey, 'Id', id, 'Name', name, 'Industry', industry, 'Address', address, 'Phone', phone)";
+            return redis.call('HSET', key, 'Id', id, 'Name', name, 'Industry', industry, 'Address', address, 'Phone', phone)";
 
         public const string Update = @"
             local key = KEYS[1]
@@ -44,7 +44,7 @@ namespace GrpcDemo.DomainService.Core.Lua.Scripts
             local industry = ARGV[3]
             local address = ARGV[4]
             local phone = ARGV[5]
-            return redis.call('HSET', targetKey, 'Id', id, 'Name', name, 'Industry', industry, 'Address', address, 'Phone', phone)";
+            return redis.call('HSET', key, 'Id', id, 'Name', name, 'Industry', industry, 'Address', address, 'Phone', phone)";
 
         public const string Delete = @"
             local key = KEYS[1]

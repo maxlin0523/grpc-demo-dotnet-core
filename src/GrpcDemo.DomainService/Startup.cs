@@ -37,7 +37,7 @@ namespace GrpcDemo.DomainService
             services.AddSingleton<ICompanyService, CompanyService>();
 
             // Repositories
-            services.AddSingleton<ICompanyRepository, CompanyRepository>();
+            services.AddSingleton<ICompanyRepository, RedisCompanyRepository>();
 
             // Database
             services.AddDatabaseHelperExtension(Configuration);

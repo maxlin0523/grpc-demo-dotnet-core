@@ -56,11 +56,9 @@ services:
     image: redis
     container_name: redis
     volumes:
-      - .data/redis:/data
+      - ./data/redis:/data
     networks:
       - test
-    ports:
-      - "3336:6379"
 # bridge
 networks:
   test:

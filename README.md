@@ -84,11 +84,9 @@
 
 第二步：於資料夾 build 階層執行指令 `docker-compose up -d`
 
-![](https://i.imgur.com/KLHd2a3.jpg)
-
 執行成功畫面
 
-![](https://i.imgur.com/6t1kqEC.png)
+![](https://i.imgur.com/Bh65dLV.png)
 
 第三步：瀏覽網址 `http://localhost:5555/swagger/index.html`
 

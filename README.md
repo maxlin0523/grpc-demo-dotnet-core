@@ -34,10 +34,10 @@
         * **Controllers** 放置來自外部 API 的請求回應接口
         * **Parameters** 放置外部傳入的參數
         * **ViewModels** 放置回傳外部的參數
+        * **Validations** 放置參數驗證 FluentValidation 的規則定義
         * **Utilities**
             * **Mappers** 放置參數映射的 Profile 物件
             * **Middlewares** 放置中介層的物件
-            * **Validations** 放置參數驗證 FluentValidation 的規則定義
     * **GrpcDemo.Message** 放置 gRPC 接口規格的定義
     * **GrpcDemo.DomainService**
         * **Implements** 放置來自 Module 的請求回應接口

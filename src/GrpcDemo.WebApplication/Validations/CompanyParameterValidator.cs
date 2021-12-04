@@ -12,24 +12,24 @@ namespace GrpcDemo.WebApplication.Validations
         public CompanyParameterValidator()
         {
             RuleFor(t => t.Id)
-                .NotNull().WithMessage("{PropertyName} must be set")
-                .Must(IsInt).WithMessage("{PropertyName} must be integer");
+                .NotNull().WithMessage("'{PropertyName}' must be set")
+                .Must(IsInt).WithMessage("'{PropertyName}' must be integer");
 
             RuleFor(t => t.Name)
-                .NotNull().WithMessage("{PropertyName} must be set")
-                .Must(value => value.Length < 50).WithMessage("Length of {PropertyName} must be less than 50");
+                .NotNull().WithMessage("'{PropertyName}' must be set")
+                .Must(value => value.Length < 50).WithMessage("Length of '{PropertyName}' must be less than 50");
 
             RuleFor(t => t.Industry)
-                .NotNull().WithMessage("{PropertyName} must be set")
-                .Must(value => value.Length < 25).WithMessage("Length of {PropertyName} must be less than 25");
+                .NotNull().WithMessage("'{PropertyName}' must be set")
+                .Must(value => value.Length < 25).WithMessage("Length of '{PropertyName}' must be less than 25");
 
             RuleFor(t => t.Address)
                 .NotNull().WithMessage("{PropertyName} must be set")
-                .Must(value => value.Length < 200).WithMessage("Length of {PropertyName} must be less than 200");
+                .Must(value => value.Length < 200).WithMessage("Length of '{PropertyName}' must be less than 200");
 
             RuleFor(t => t.Phone)
-                .NotNull().WithMessage("{PropertyName} must be set")
-                .Must(IsInt).WithMessage("{PropertyName} must be integer");
+                .NotNull().WithMessage("'{PropertyName}' must be set")
+                .Must(IsInt).WithMessage("'{PropertyName}' must be integer");
         }
 
         private Func<string, bool> IsInt => input => 

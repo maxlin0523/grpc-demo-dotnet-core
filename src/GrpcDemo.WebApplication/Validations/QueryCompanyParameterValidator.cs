@@ -12,8 +12,8 @@ namespace GrpcDemo.WebApplication.Validations
         public QueryCompanyParameterValidator()
         {
             RuleFor(t => t.Id)
-                    .NotNull().WithMessage("'{PropertyName}' must be set")
-                    .Must(IsInt).WithMessage("'{PropertyName}' must be integer");
+                .NotNull().WithMessage("'{PropertyName}' must be set")
+                .Must(IsInt).WithMessage("'{PropertyName}' must be integer");
         }
 
         private Func<string, bool> IsInt => input =>

@@ -16,7 +16,7 @@ namespace GrpcDemo.DomainService.Core.Lua.Scripts
             local key = KEYS[1]
             local matches = redis.call('KEYS', key .. '*')
             local array = {}
-            for index, value in ipairs(matches) do
+            for _, value in ipairs(matches) do
                 table.insert(array, redis.call('HVALS', value))
             end
             return cjson.encode(array)";

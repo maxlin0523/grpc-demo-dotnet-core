@@ -7,7 +7,7 @@ namespace GrpcDemo.WebApplication.Parameters
 {
     public class CompanyParameter
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         public string Name { get; set; }
 
@@ -15,6 +15,6 @@ namespace GrpcDemo.WebApplication.Parameters
 
         public string Address { get; set; }
 
-        public int Phone { get; set; }
+        public string Phone { get; set; }
     }
 }

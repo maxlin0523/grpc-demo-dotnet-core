@@ -5,20 +5,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using GrpcDemo.Message;
 using Grpc.Core;
 using Microsoft.OpenApi.Models;
 using GrpcDemo.WebApplication.Utilities.Middlewares;
-using Microsoft.AspNetCore.Diagnostics;
-using System.Text.Json;
-using GrpcDemo.Common.Models;
-using ResponseCode = GrpcDemo.Common.Enums.ResponseCode;
-using Microsoft.AspNetCore.Http;
+using FluentValidation.AspNetCore;
 
 namespace GrpcDemo.WebApplication
 {
@@ -42,7 +34,10 @@ namespace GrpcDemo.WebApplication
                 });
             });
 
-            services.AddControllers();
+            services.AddControllers().AddFluentValidation(fv =>
+            {
+                fv.RegisterValidatorsFromAssemblyContaining<Startup>();   
+            });
 
             // gRPC Service
             var host = Configuration.GetSection("DomainService:Host").Value;

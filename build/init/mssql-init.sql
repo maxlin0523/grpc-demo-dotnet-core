@@ -14,8 +14,8 @@ GO
 CREATE TABLE [dbo].[Company](
 	[Id] [int] NOT NULL,
 	[Name] [varchar](50) NOT NULL,
-	[Industry] [varchar](50) NOT NULL,
-	[Address] [varchar](50) NOT NULL,
+	[Industry] [varchar](25) NOT NULL,
+	[Address] [varchar](200) NOT NULL,
 	[Phone] [int] NOT NULL,
  CONSTRAINT [PK_Company] PRIMARY KEY CLUSTERED 
 (

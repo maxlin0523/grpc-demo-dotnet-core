@@ -16,6 +16,8 @@ namespace GrpcDemo.WebApplication.Utilities.Mappers
             CreateMap<CompanyParameter,CompanyMessage>();
 
             CreateMap<CompanyMessage, CompanyViewModel>();
+
+            CreateMap<QueryCompanyParameter, QueryCompanyMessage>();
         }
     }
 }

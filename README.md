@@ -37,6 +37,7 @@
         * **Utilities**
             * **Mappers** 放置參數映射的 Profile 物件
             * **Middlewares** 放置中介層的物件
+            * **Validations** 放置參數驗證 FluentValidation 的規則定義
     * **GrpcDemo.Message** 放置 gRPC 接口規格的定義
     * **GrpcDemo.DomainService**
         * **Implements** 放置來自 Module 的請求回應接口
@@ -54,7 +55,7 @@
         * **Repositories** 放置資料存取的實作
         * **Utilities**
             * **DatabaseHelpers** 放置資料庫連線物件
-    * **GrpcDemo.Test** 放置單元測試的類別
+    * **GrpcDemo.Test** 放置 NUnit 單元測試類別
 
 ---
 
@@ -64,10 +65,10 @@
 * **API Testing**
     * Swagger
 * **參數驗證**
-    * FluentValidation(待補)
+    * FluentValidation
 * **分散式效能追蹤**
     * Jaeger(待補)
-* **單元測試**
+* **單元測試(NUnit)**
     * FluentAssertion
     * NSubstitute
     * AutoFixture

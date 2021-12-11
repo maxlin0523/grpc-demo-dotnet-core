@@ -34,7 +34,10 @@ namespace GrpcDemo.WebApplication
                 });
             });
 
-            services.AddControllers().AddFluentValidation(fv =>
+            services.AddControllers();
+                
+            // FluentValidation
+            services.AddFluentValidation(fv =>
             {
                 fv.RegisterValidatorsFromAssemblyContaining<Startup>();   
             });

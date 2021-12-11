@@ -15,19 +15,19 @@ namespace GrpcDemo.DomainService.Core.Repositories
     {
         private readonly string _prefix;
 
-        private readonly LuaScriptHelper _redisLua;
+        private readonly LuaScriptHelper _redisScript;
 
         public RedisCompanyRepository(RedisConnectionHelper helper)
         {
             _prefix = CompanyScript.Prefix;
 
-            _redisLua = new LuaScriptHelper(helper.GetConnection(), helper.GetConnectionString());
+            _redisScript = new LuaScriptHelper(helper.GetConnection(), helper.GetConnectionString());
         }
 
         public async Task<CompanyEntity> GetById(QueryCompanyEntity query)
         {
             var keys = new RedisKey[] { _prefix + query.Id };
-            var array = (string[])await _redisLua.Execute(CompanyScript.GetById, keys);
+            var array = (string[])await _redisScript.Evaluate(CompanyScript.GetById, keys);
 
             return array.Length == 0 
                 ? null 
@@ -44,7 +44,7 @@ namespace GrpcDemo.DomainService.Core.Repositories
         public async Task<IEnumerable<CompanyEntity>> GetAll()
         {
             var keys = new RedisKey[] { CompanyScript.Prefix };
-            var json = (string)await _redisLua.Execute(CompanyScript.GetAll, keys);
+            var json = (string)await _redisScript.Evaluate(CompanyScript.GetAll, keys);
             if (json == "{}")
             {
                 // 無資料回傳空
@@ -67,7 +67,7 @@ namespace GrpcDemo.DomainService.Core.Repositories
         public async Task<bool> IsExists(QueryCompanyEntity query)
         {
             var keys = new RedisKey[] { _prefix + query.Id };
-            var result = (int)await _redisLua.Execute(CompanyScript.IsExists, keys);
+            var result = (int)await _redisScript.Evaluate(CompanyScript.IsExists, keys);
 
             return result > 0;
         }
@@ -76,7 +76,7 @@ namespace GrpcDemo.DomainService.Core.Repositories
         {
             var keys = new RedisKey[] { _prefix + entity.Id };
             var values = new RedisValue[] { entity.Id, entity.Name, entity.Industry, entity.Address, entity.Phone };
-            var result = (int)await _redisLua.Execute(CompanyScript.Create, keys, values);
+            var result = (int)await _redisScript.Evaluate(CompanyScript.Create, keys, values);
 
             return result > 0;
         }
@@ -85,7 +85,7 @@ namespace GrpcDemo.DomainService.Core.Repositories
         {
             var keys = new RedisKey[] { _prefix + entity.Id };
             var values = new RedisValue[] { entity.Id, entity.Name, entity.Industry, entity.Address, entity.Phone };
-            var result = (int)await _redisLua.Execute(CompanyScript.Update, keys, values);
+            var result = (int)await _redisScript.Evaluate(CompanyScript.Update, keys, values);
 
             return result > 0;
         }
@@ -93,7 +93,7 @@ namespace GrpcDemo.DomainService.Core.Repositories
         public async Task<bool> Delete(QueryCompanyEntity query)
         {
             var keys = new RedisKey[] { _prefix + query.Id };
-            var result = (int)await _redisLua.Execute(CompanyScript.Delete, keys);
+            var result = (int)await _redisScript.Evaluate(CompanyScript.Delete, keys);
 
             return result > 0;
         }

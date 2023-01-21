@@ -81,15 +81,13 @@
 
 ## 啟動
 
-第一步：將專案 restore 並確認編譯成功
-
-第二步：於資料夾 build 階層執行指令 `docker-compose up -d`
+第一步：於資料夾 build 階層執行指令 `docker-compose up -d`
 
 執行成功畫面
 
 ![](https://i.imgur.com/Bh65dLV.png)
 
-第三步：瀏覽網址 `http://localhost:5555/swagger/index.html`
+第二步：瀏覽網址 `http://localhost:5555/swagger/index.html`
 
 看到此網頁畫面即可進行操作
 

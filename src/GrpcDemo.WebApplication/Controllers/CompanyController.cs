@@ -27,7 +27,6 @@ namespace GrpcDemo.WebApplication.Controllers
         }
 
         [HttpGet]
-        [Route("")]
         public async Task<GeneralResponse<CompanyViewModel>> GetById([FromQuery] QueryCompanyParameter param)
         {
             var result = await _serviceClient.GetByIdAsync(_mapper.Map<QueryCompanyMessage>(param));
@@ -47,7 +46,6 @@ namespace GrpcDemo.WebApplication.Controllers
         }
 
         [HttpPost]
-        [Route("Create")]
         public async Task<GeneralResponse<string>> Create([FromBody] CompanyParameter param)
         {
             var result = await _serviceClient.CreateAsync(_mapper.Map<CompanyMessage>(param));
@@ -57,7 +55,6 @@ namespace GrpcDemo.WebApplication.Controllers
         }
 
         [HttpPut]
-        [Route("Update")]
         public async Task<GeneralResponse<string>> Update([FromBody] CompanyParameter param)
         {
             var result = await _serviceClient.UpdateAsync(_mapper.Map<CompanyMessage>(param));
@@ -67,7 +64,6 @@ namespace GrpcDemo.WebApplication.Controllers
         }
 
         [HttpDelete]
-        [Route("Delete")]
         public async Task<GeneralResponse<string>> Delete([FromQuery] QueryCompanyParameter param)
         {
             var result = await _serviceClient.DeleteAsync(_mapper.Map<QueryCompanyMessage>(param));
